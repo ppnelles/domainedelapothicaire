@@ -22,8 +22,12 @@
 
     img {
       display: block;
-      width: 64px;
+      width: 45px;
       height: auto;
+
+      @include mappy-bp(screen-xs) {
+       width: 64px; 
+      }
 
       @include mappy-bp(screen-md) {
         width: 50px; 
@@ -42,10 +46,14 @@
         text-decoration: none;
         color: #13100d;
         font-weight: 700;
-        font-size: 1.25rem;
+        font-size: 0.75rem;
+
+        @include mappy-bp(screen-xs) {
+          font-size: 1rem;
+        }
 
         @include mappy-bp(screen-lg) {
-          font-size: 1.75rem;
+          font-size: 1.25rem;
         }
       }
     }

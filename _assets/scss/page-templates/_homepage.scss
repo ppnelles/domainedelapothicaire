@@ -112,15 +112,22 @@
 
 	.home-header {
 		padding: 2em 0 0;
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
+
+		@include mappy-bp(screen-xs) {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
 	}
 
 	ul.networks {
 		@include reset-list();
 		display: flex;
-		margin-top: 0.25em;
+		margin: 0.25em 0 1em;
+
+		@include mappy-bp(screen-xs) {
+			margin: 0.25em 0 0;	
+		}
 		
 		li {
 			a {
