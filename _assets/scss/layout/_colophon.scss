@@ -20,7 +20,8 @@
 		@include mappy-bp(screen-sm) {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;	
+			// justify-content: space-between;	
+			justify-content: center;	
 		}
 
 		> div {
@@ -28,6 +29,12 @@
 
 			@include mappy-bp(screen-sm) {
 				margin: 0;	
+			}
+		}
+
+		.footer-privacy {
+			@include mappy-bp(screen-sm) {
+				margin-left: 5px;	
 			}
 		}
 	}

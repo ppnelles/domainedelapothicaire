@@ -16,7 +16,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<div class="about">
-				<span class="footer-name">© Copyright <?php echo date("Y"); ?> <strong><?php bloginfo( 'name' ); ?></strong></span> 
+				<span class="footer-name">© Copyright <?php echo date("Y"); ?> <strong><?php bloginfo( 'name' ); ?> </strong></span> 
 
 				<?php if(get_field('footer_info','option')): ?> 
 					<span class="footer-info">
@@ -26,9 +26,9 @@
 
 				<span class="footer-privacy"><span class="sep"> - </span> <?php echo get_the_privacy_policy_link(); ?></span>
 			</div>
-			<div class="made-by">
+			<?php /* <div class="made-by">
 				<a href="https://www.getin.agency/" title="<?php _e('Website by GET IN Agency','_turbo') ?>"><span><?php _e('Website by GET IN Agency','_turbo') ?></span></a>
-			</div>
+			</div> */ ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
