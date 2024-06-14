@@ -1,7 +1,7 @@
 #colophon {
-	background-color: $colophon-bg-color;
-	color: $colophon-text-color;
-	font-size: 0.8em;
+	background-color: $c-text;
+	color: $c-background_body;
+	margin: 2em 0 0;
 	padding: 1em 0;
 	text-align: center;
 	
@@ -9,8 +9,13 @@
 		text-align: left;	
 	}
 
+	a {
+		color: $c-background_body;
+	}
+
 	.site-info {
-		@include container();
+		width: 95%;
+		margin: 0 auto;
 		
 		@include mappy-bp(screen-sm) {
 			display: flex;
@@ -27,17 +32,25 @@
 		}
 	}
 
-	p {
-		margin: 0;
+	.about {
+		display: flex;
+		flex-direction: column;
+
+		@include mappy-bp(screen-sm) {
+			flex-direction: row;	
+		}
+
+		span.sep {
+			display: none;
+
+			@include mappy-bp(screen-sm) {
+				display: inline;	
+			}
+		}
 	}
 
-	a {
-		color: $colophon-link-color;
-		font-size: inherit;
-
-		&:hover {
-			color: $colophon-link-hover-color;
-		}
+	p {
+		margin: 0;
 	}
 
 	.made-by {

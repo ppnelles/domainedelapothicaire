@@ -46,3 +46,4 @@ function _turbo_pingback_header() {
 	}
 }
 add_action( 'wp_head', '_turbo_pingback_header' );
+

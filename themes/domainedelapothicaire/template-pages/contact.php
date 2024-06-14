@@ -8,35 +8,63 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main" role="main" itemprop="mainContentOfPage">
+<main id="primary" class="site-main contact" role="main" itemprop="mainContentOfPage">
 
-	<div class="storifier banner centered">
-		<div class="content default">
-			<h1 class="storifier-title main-title"><?php the_field( 'intro_title' ); ?></h1>
-		</div>
+	<?php _turbo_post_thumbnail(); ?>
+
+	<div class="page-container">
+	
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
+			<header class="entry-header">
+				<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+			</header><!-- .entry-header -->
+			<div class="entry-content" itemprop="articleBody">
+				<?php the_content(); ?>
+			</div><!-- .entry-content -->
+
+			<div class="contact-information">
+				<?php echo do_shortcode(get_field( 'code_formulaire' )); ?>
+				<div class="company">
+					<h3><?php the_field( 'nom_sas' ); ?></h3>
+					<div class="address">
+						<p><?php the_field( 'adresse_l1' ); ?></p>
+						<p><?php the_field( 'adresse_l2' ); ?></p>
+						<p><?php the_field( 'pays' ); ?></p>
+					</div>
+					<div class="legal">
+						<p><?php the_field( 'siren' ); ?></p>
+						<p><?php the_field( 'rcs' ); ?></p>
+						<p><?php the_field( 'tva' ); ?></p>
+					</div>
+				</div>
+			</div>
+		</article>
+
+	<?php
+	$related_pages = get_field('linked_paged');
+	if( $related_pages ): ?>
+	    <ul class="related_pages">
+	    <?php foreach( $related_pages as $post ): 
+
+	        // Setup this post for WP functions (variable must be named $post).
+	        setup_postdata($post); ?>
+	        <li>
+	        	<a href="<?php the_permalink(); ?>">
+	        		<?php _turbo_post_thumbnail(); ?>
+	        		<div class="inner">
+	            		<h3><?php the_title(); ?></h3>
+	        		</div>
+	            </a>
+	        </li>
+	    <?php endforeach; ?>
+	    </ul>
+	    <?php 
+	    // Reset the global post object so that the rest of the page works correctly.
+	    wp_reset_postdata(); ?>
+	<?php endif; ?>
+
 	</div>
 
-	<div class="contact-page">
-		<div class="inner">
-			<div class="content">
-				<h2><?php the_field( 'contact_title' ); ?></h2>
-				<div><?php the_field( 'content_content' ); ?></div>
-				<address class="p-adr h-adr">
-		        	<h2>Notre adresse</h2>
-					<p class="p-name"><?php the_field( 'adress_name', 'option' ); ?></p>
-					<p class="p-street-address"><?php the_field( 'adress_street', 'option' ); ?></p>
-					<p><span class="p-postal-code"><?php the_field( 'adress_postcode', 'option' ); ?></span> <span class="p-locality"><?php the_field( 'adress_locality', 'option' ); ?></span>, <span class="p-country-name"><?php the_field( 'adress_country', 'option' ); ?></span></p>
-					<p><a href="<?php the_field( 'adress_gmap_url', 'option' ); ?>" target="_blank"><?php _e( 'Google Maps','_turbo' ); ?></a></a>
-					</p>
-					<p class="parking"><?php the_field( 'adress_parking', 'option' ); ?></p>
-		        </address>
-			</div>
-			<div class="the-form">
-				<h2>Formulaire de contact</h2>
-				<?php echo do_shortcode(get_field('contact_form')) ?>
-			</div>
-		</div>
-	</div>
 
 </main><!-- #main -->
 

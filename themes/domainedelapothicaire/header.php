@@ -25,7 +25,11 @@ endif; ?>
 	<meta name="HandheldFriendly" content="true" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<meta name="author" content="AUTHOR NAME" />
+	<meta name="author" content="Domaine de l’Apothicaire" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
 	<?php get_template_part( 'template-parts/google', 'head' ); ?>
 
@@ -33,7 +37,7 @@ endif; ?>
 	<?php get_template_part('/template-parts/content', 'favicons' ); ?>	
 </head>
 
-<body <?php body_class(); ?> role="document" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+<body <?php body_class(get_field('wine-type')); ?> role="document" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 <div id="page" class="site">
 	<?php get_template_part( 'template-parts/google', 'body' ); ?>
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', '_turbo' ); ?></a>
@@ -43,18 +47,19 @@ endif; ?>
 			<div class="site-branding">
 				<?php
 				if ( is_page_template('template-pages/homepage.php') ) : ?>
+					<img src="<?php bloginfo('template_directory'); ?>/img/logo-domaine-de-l-apothicaire.png">
 					<h1 class="site-title" itemprop="name">
 						<a href="#page" rel="home">
-							<span><?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description', 'display' )  ?>
-							</span>
+							<span><?php bloginfo( 'name' ); ?></span>
 						</a>
 					</h1>
 					<?php
 				else :
 					?>
+					<img src="<?php bloginfo('template_directory'); ?>/img/logo-domaine-de-l-apothicaire.png">
 					<p class="site-title" itemprop="name">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<span><?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description', 'display' )  ?></span>
+							<span><?php bloginfo( 'name' ); ?>
 						</a>
 					</p>
 					<?php
@@ -71,12 +76,6 @@ endif; ?>
 				<div class="nav-inner">
 					<div class="primary-menu">
 						<?php wp_nav_menu( array( 'theme_location' => 'Primary') ); ?>
-					</div>
-					<div class="secondary-menu">
-						<?php wp_nav_menu( array( 'theme_location' => 'Secondary') ); ?>
-						<?php /* <div>
-							<?php do_action('wpml_add_language_selector'); ?>
-						</div> */ ?>
 					</div>
 				</div>
 			</nav><!-- #site-navigation -->

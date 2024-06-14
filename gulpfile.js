@@ -38,6 +38,7 @@ function scripts() {
             .src(
                 [
                     //"./_assets/js/abstract/aos.js",
+                    "./_assets/js/abstract/lightbox.min.js",
                     //"./_assets/js/abstract/wpml/legacy-dropdown.js",
                     //"./_assets/js/abstract/wpml/legacy-dropdown-click.js",
                     "./_assets/js/jquery.cookie.js",

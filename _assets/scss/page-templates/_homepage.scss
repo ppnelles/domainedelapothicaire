@@ -1,129 +1,149 @@
 .page-template-homepage {
 
-	/*.slider-hero,
-	.fixed-hero {
-		width: 100%;
-		overflow: hidden;
+	.home-intro {
+		margin-top: -7rem;
 		position: relative;
+		z-index: 2;
+
+	    @include mappy-bp(screen-md) {
+	      display: flex;
+	      flex-wrap: wrap;
+	      align-items: flex-end;
+	      justify-content: space-between; 
+	      width: 98%;
+	      margin-top: -10rem; 
+	    }
+	}
+
+	.last-news {
+		background-color: #fff;
+		padding: 2em;
+		width: 90%;
+		margin: 2em auto 0;
+
+	    @include mappy-bp(screen-md) {
+	      width: 30%;  
+	      margin: 0;
+	    }
+
+	    h2 {
+	    	position: relative;
+
+	    	&:after {
+			    border: .15rem solid #e30613;
+			    bottom: -.5rem;
+			    content: "";
+			    left: 0;
+			    position: absolute;
+			    width: 3rem;
+	    	}
+	    }
+
+	    ul {
+	    	li {
+	    		list-style: square;
+
+	    		h4 {
+	    			font-size: 1.25rem;
+	    			font-weight: 700;
+	    			margin: 0;
+	    			color: $c-text;
+	    		}
+
+	    		p {
+	    			font-style: italic;
+	    			color: $c-text;
+	    		}
+
+	    		a {
+	    			display: block;
+	    			text-decoration: none;
+
+	    			&:hover {
+	    				h4 {
+	    					color: $red;
+	    				}
+	    			}
+	    		}
+	    	}
+	    }
+	}
+
+	div.badge {
+		position: absolute;
+		width: 6rem;
+		top: -3rem;
+		right: 0;
+
+		@include mappy-bp(screen-sm) {
+		width: 8rem;
+		top: -4rem;
+		}
 
 		@include mappy-bp(screen-md) {
-			padding: 0;	
-			height: calc(#{$hero-height} - #{$masthead-height});
+			right: -4rem;	
 		}
 
-		.admin-bar & {
-			@include mappy-bp(screen-md) {
-				height: calc(#{$hero-height} - #{$masthead-height} - 20px);
-			}
+		@include mappy-bp(screen-lg) {
+			width: 10rem;
+			top: -5rem;
+			right: -5rem;
 		}
+	}
 
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
+	ul.related_pages {
+		width: 90%;
+		margin: 2em auto 0;
 
-		.owl-stage {
+		@include mappy-bp(screen-md) {
+			width: 95%;
 			display: flex;
 			flex-wrap: wrap;
-			overflow: hidden;
-			
+			align-items: flex-start;
+			justify-content: space-between;	
 		}
 
-		.owl-item {
-			height: 100%;
-			position: relative;
+		li {
+			@include mappy-bp(screen-md) {
+				width: 31.333333333%;	
+			}
+		}
+	}
 
+	.home-header {
+		padding: 2em 0 0;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	ul.networks {
+		@include reset-list();
+		display: flex;
+		margin-top: 0.25em;
 		
-			@include mappy-bp(screen-md) {
-				height: calc(#{$hero-height} - #{$masthead-height});
-			}
-			
-			.admin-bar & {
-				@include mappy-bp(screen-md) {
-					height: calc(#{$hero-height} - #{$masthead-height} - 20px);	
-				}
-			}
-
-		}
-
-		.owl-nav {
-			button {
-				@include transition-default();
-				background-color: transparent;
-				color: white;
-				position: absolute;
-				z-index: 20;
-				font-size: 300%;
-				padding: 0;
-				opacity: 0.5;
-				bottom: calc(50% - 30px);
-
-				@include mappy-bp(screen-md) {
-					bottom: 2.5em;
-				}
-
-				&:hover {
-					opacity: 1;
-				}
-
-				&.owl-prev {
-					left: 2%;
-				}
-
-				&.owl-next {
-					right: 2%;
-				}
-			}
-		}
-
-		.hero-image {
-			@include mappy-bp(screen-md) {
-				display: none;	
-			} 
-		}
-
-		.hero-bg {
-			display: none;
-
-	 		@include mappy-bp(screen-md) {
+		li {
+			a {
 				display: block;
-				position: absolute;
-				z-index: 1;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-size: cover;
-				background-position: center center;
-			} 
-		}
+				width: 25px;
+				height: 25px;
 
-		.hero-title {
-			font-family: $f-title;
-			font-size: calc(1.5rem + 1.1vw);
-			line-height: 1.2;
-			font-weight: 900;
-			text-transform: uppercase;
-			color: $c-text;
-			text-align: center;
-			padding: 1em 0;
+				&.facebook {
+					background: transparent url('img/facebook.svg') 0 0 no-repeat;
+					background-size: cover;
+					margin-right: 5px;
+				}
 
-			@include mappy-bp(screen-sm) {
-				position: absolute;
-				width: 100%;
-				top: 0;
-				left: 0;
-				z-index: 10;
-				margin: 1.5em 0 0;
-				text-align: left;
-				padding: 0;
-			}
+				&.instagram {
+					background: transparent url('img/instagram.svg') 0 0 no-repeat;
+					background-size: cover;
+				}
 
-			.inner {
-				@include container();
+				span {
+					display: none;
+				}
 			}
 		}
-	}*/
+	}
 
 }

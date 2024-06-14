@@ -73,9 +73,47 @@
 
 	a {
 		display: block;
-		padding: 0 0.25em;
+		padding: 0 .5em;
 		color: $main-nav-link-color;
 		text-decoration: none;
+		text-transform: uppercase;
+		position: relative;
+		font-weight: 700;
+
+		&:after {
+
+			@include mappy-bp(screen-md) {
+				@include transition-default();
+				content: '';
+				display: block;
+				width: 36px;
+				height: 4px;
+				background-color: transparent;
+				margin: 0 auto;
+				position: absolute;
+				bottom: -0.75em;
+				left: calc(50% - 18px);
+			}
+		}
+
+		&:hover:after {
+			@include mappy-bp(screen-md) {
+				background-color: $red;
+			}
+		}
+		//font-size: 85%;
+
+		@include mappy-bp(screen-md) {
+			font-size: 85%;
+		}
+
+		@include mappy-bp(screen-lg) {
+			font-size: 90%;	
+		}
+
+		@include mappy-bp(screen-xxl) {
+			font-size: 100%;
+		}
 
 		&:hover {
 			color: $main-nav-link-hover-color;
@@ -84,18 +122,22 @@
 
 	.current_page_item > a,
 	.current-menu-item > a,
-	.current_page_ancestor > a,
+	.current-page-ancestor > a,
 	.current-menu-ancestor > a {
-	}
-
-	.current-menu-item > a {
 		color: $main-nav-active-color;
+
+		&:after {
+			@include mappy-bp(screen-md) {
+				background-color: $red;
+			}
+		}
+
 	}
 }
 
 .menu-toggle {
 	position: absolute;
-	top: 1.5em;
+	top: 0.5em;
 	right: 2.5%;
 	display: inline-block;
 	width: auto;

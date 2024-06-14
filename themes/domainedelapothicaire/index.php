@@ -15,30 +15,60 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main" role="main" itemprop="mainContentOfPage">
+<main id="primary" class="site-main news" role="main" itemprop="mainContentOfPage">
 
-<?php
-if ( have_posts() ) :
+	<div class="post-thumbnail" itemprop="primaryImageOfPage">
+		<?php //ACF field must be set as ID
+		if(get_field('cover',910)) { ?>
+			<figure>
+				<?php echo wp_get_attachment_image(get_field('cover',910), 'full'); ?>
+			</figure>
+		<?php } ?>
+	</div>
 
-	if ( is_home() && ! is_front_page() ) :
-		?>
-		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-		</header>
-		<?php
-	endif;
+	<div class="page-container">
+		<article class="hentry">
+			<header class="entry-header">
+				<h1><?php the_field( 'titre',910 ); ?></h1>
+			</header><!-- .entry-header -->
 
-	while ( have_posts() ) :
-		the_post();
-		get_template_part( 'template-parts/content', get_post_type() );
-	endwhile;
+			<div class="the-news">
+				<?php
+				    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+				    $args = array( 
+				        'posts_per_page' => 8, 
+				        'paged' => $paged, 
+				    );
+				    $cpt_query = new WP_Query($args);
+				?>
 
-	the_posts_navigation();
+				<?php if ($cpt_query->have_posts()) : while ($cpt_query->have_posts()) : $cpt_query->the_post(); ?>
 
-else :
-	get_template_part( 'template-parts/content', 'none' );
-endif;
-?>
+				    <div class="news-excerpt">
+				    	<?php _turbo_post_thumbnail(); ?>
+				    	<div class="inner">
+				    		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				    		<div class="excerpt">
+				    			<p><?php echo _turbo_truncate_content(get_the_content(), 200, '...', false, false, true); ?></p> 
+				    		</div>
+				    	</div>
+				    	<div class="more"><a class="btn" href="<?php the_permalink(); ?>">Lire la suite</a></div>
+
+				    	<?php ?>
+				    </div>
+
+				<?php endwhile; endif; ?>
+
+			</div>
+			<nav class="news-nav">
+			    <ul>
+			        <li><?php previous_posts_link( '&laquo; Suivant', $cpt_query->max_num_pages) ?></li> 
+			        <li><?php next_posts_link( 'Précedent &raquo;', $cpt_query->max_num_pages) ?></li>
+			    </ul>
+			</nav>
+
+		</article>
+	</div>
 
 </main><!-- #main -->
 

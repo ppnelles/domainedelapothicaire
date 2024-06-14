@@ -4,9 +4,10 @@
   background-color: $masthead-bgcolor;
 
   .inner {
-    @include container();
+    width: 95%;
+    max-width: 1800px;
     position: relative;
-    margin: 0.5em auto 0;
+    margin: 0.5em auto;
 
     @include mappy-bp(screen-md) {
     	display: flex;
@@ -16,32 +17,38 @@
 
   .site-branding {
     display: flex;
-    margin: 0 0 0.5em
-  }
+    align-items: center;
+    margin: 0;
 
-  .site-title {
-    @include transition-default();
-  	display: inline-block;
-  	margin: 0;
-    width: 120px;
-    height: 120px;
-  	background: transparent url('img/awesome-logo.svg') 0 0 no-repeat;
-  	position: relative;
-  	z-index: 2;
+    img {
+      display: block;
+      width: 64px;
+      height: auto;
 
+      @include mappy-bp(screen-md) {
+        width: 50px; 
+      }
 
-  	a {
- 	 	@include text-hide();
-		display: block;
-		width: 100%;
-		height: 100%;
-		text-decoration: none;
-		      
-        span {
-          visibility: hidden;
-          display: none;
+      @include mappy-bp(screen-lg) {
+       width: 64px; 
+      }
+    }
+
+    .site-title {
+      white-space: nowrap;
+      margin: 0;
+
+      a {
+        text-decoration: none;
+        color: #13100d;
+        font-weight: 700;
+        font-size: 1.25rem;
+
+        @include mappy-bp(screen-lg) {
+          font-size: 1.75rem;
         }
-  	}
+      }
+    }
   }
 
 }

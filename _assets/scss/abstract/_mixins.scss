@@ -1,7 +1,6 @@
 @mixin btn() {
 	display: inline-block;
-	font-weight: 400;
-	font-size: 0.9em;
+	font-weight: 700;
 	background-color: $c-link;
 	color: white;
 	border: none;
@@ -59,5 +58,5 @@
 }
 
 @mixin transition-default($prop: all) {
-	transition: $prop 150ms ease-out;
+	transition: $prop 500ms ease-in-out;
 }

@@ -2,8 +2,11 @@
  * _animation.scss
  * Custom WooCommerce Animations.
  */
-@keyframes spin {
+@keyframes hero-appear {
+	0% {
+		opacity: 0;
+	}
 	100% {
-		transform: rotate( 360deg );
+		opacity: 1;
 	}
 }

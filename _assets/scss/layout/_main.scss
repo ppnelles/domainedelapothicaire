@@ -9,3 +9,428 @@
 #primary {
   //@include container();
 }
+
+main {
+  > .post-thumbnail {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    figure {
+      overflow: hidden;
+
+      img {
+        animation: hero-appear 8s normal forwards ease-out;
+        display: block;
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        overflow: hidden;
+
+        @include mappy-bp(screen-xs) {
+          height: 435px;
+        }
+
+        @include mappy-bp(screen-sm) {
+          height: 515px; 
+        }
+
+        @include mappy-bp(screen-md) {
+         height: 600px; 
+        }
+
+        @include mappy-bp(screen-lg) {
+          height: 750px; 
+        }
+      }
+    }
+  }
+
+  article.hentry {
+    background-color: #fff;
+    width: 90%;
+    margin: 0 auto;
+    padding: 2em;
+    position: relative;
+    z-index: 2;
+
+    @include mappy-bp(screen-md) {
+      width: 65%; 
+    }
+
+    .entry-content {
+      a {
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      h3 {
+        position: relative;
+        padding: 0 0 0.25em;
+
+        &:after {
+          border: .2rem solid $red;
+          bottom: -.5rem;
+          content: "";
+          left: 0;
+          position: absolute;
+          width: 3rem;
+        }
+      }
+    }
+  }
+
+  .entry-header {
+    h1 {
+      position: relative;
+      margin: 0 0 2rem;
+
+      &:after {
+            position: absolute;
+            content: "";
+            width: 3rem;
+            left: 0;
+            bottom: -0.5rem;
+            border: 0.2rem solid $red;
+      }
+    }
+  }
+
+  ul.related_pages {
+    @include reset-list();
+    width: 90%;
+    margin: 2em auto 0;
+    position: relative;
+    z-index: 2;
+
+    @include mappy-bp(screen-md) {
+      width: 30%;  
+      margin: 0;
+    }
+
+    li {
+      margin: 0 0 2em;
+    }
+
+
+    h3 {
+      margin: 0;
+      position: relative;
+
+      &:after {
+            position: absolute;
+            content: "";
+            width: 3rem;
+            left: 0;
+            bottom: -0.5rem;
+            border: 0.15rem solid $red;
+      }
+
+    }
+
+    figure {
+      overflow: hidden;
+
+      img {
+        @include transition-default();
+        display: block;
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        transform: scale(1);
+      }
+    }
+
+    a {
+      display: block;
+      background-color: #fff;
+      text-decoration: none;
+  
+      div.inner {
+        padding: 1rem 1rem 1.5rem;
+      }
+
+      &:hover {
+        figure {
+          img {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+  }
+
+  ul.our-wines {
+    @include reset-list();
+
+    @include mappy-bp(screen-sm) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between; 
+    }
+
+    li {
+      @include mappy-bp(screen-sm) {
+        width: 31.3333%; 
+      }
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: calc(0.75rem + 1vw);
+    }
+
+    figure {
+      width: 50%;
+      margin: 0 auto;
+
+      @include mappy-bp(screen-sm) {
+        width: 80%; 
+      }
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+
+      &:hover {
+
+        h2 {
+          color: $red;
+        }
+      }
+    }
+
+  }
+
+  figure.photo-bouteille {
+    text-align: center;
+  }
+
+  div.wine-attribute {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 1em;
+
+    &.alcool {
+      margin: 0;
+    }
+
+    .picto {
+      width: 50px;
+      margin: 0 1rem 0 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .intro {
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .contact-information {
+
+    @include mappy-bp(screen-lg) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap; 
+    }
+
+    .wpcf7 {
+      @include mappy-bp(screen-lg) {
+        width: 60%;
+      }
+    }
+
+
+    .company {
+
+      @include mappy-bp(screen-lg) {
+        width: 35%;
+        text-align: right; 
+      }
+
+      h3 {
+        margin: 0 0 1em;
+        position: relative;
+
+        &:after {
+          position: absolute;
+          content: "";
+          width: 3rem;
+          left: 0;
+          bottom: -0.5rem;
+          border: 0.15rem solid $red;
+
+          @include mappy-bp(screen-lg) {
+            left: calc(100% - 2em); 
+          }
+        }
+
+      }
+      p {
+        margin: 0;
+      }
+
+      .legal {
+        margin: 1em 0 0;
+      }
+    }
+
+  }
+
+  .page-container {
+    margin-top: -7rem;
+
+    @include mappy-bp(screen-md) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between; 
+      width: 98%;
+    }
+
+    @include mappy-bp(screen-lg) {
+      margin-top: -10rem; 
+    }
+
+    &.two-cols {
+      position: relative;
+
+      article {
+        @include mappy-bp(screen-md) {
+          padding-right: 20%;
+        }
+      }
+
+      figure.photo-bouteille {
+        @include mappy-bp(screen-md) {
+          width: 25%;
+          position: absolute;
+          top: -5rem;
+          right: 0;
+        }
+
+        @include mappy-bp(screen-xl) {
+          top: -10rem; 
+        }
+      }
+    }
+  }  
+}
+
+main.news {
+  .hentry {
+    width: 90%;
+
+  }
+
+  .the-news {
+    @include mappy-bp(screen-sm) {
+      column-count: 2;
+      column-gap: 2%
+    }
+
+    @include mappy-bp(screen-md) {
+      column-count: 3;
+    }
+
+    @include mappy-bp(screen-xl) {
+      column-count: 4;  
+    }
+
+  }
+
+  .news-excerpt {
+    padding: 0 0 2em;
+    margin: 0 0 2em;
+    border-bottom: 1px solid #dee2e6;
+
+    @include mappy-bp(screen-sm) {
+     border: 1px solid #dee2e6; 
+     padding: 0;
+     break-inside: avoid-column;
+    }
+
+    @include mappy-bp(screen-sm) {
+      //width: 48%; 
+      margin: 0 0 2em;
+    }
+
+    @include mappy-bp(screen-xl) {
+      //width: 23%; 
+    }
+
+    .more {
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    .inner {
+      @include mappy-bp(screen-sm) {
+        padding: 0 1em;
+        //min-height: 350px;
+      }
+    }
+
+    figure {
+      img {
+        display: block;
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+      }
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: calc(1rem + 0.5vw);
+      color: $red;
+      margin: 1em 0 0.5em;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .news-nav {
+    margin: 4em 0 0;
+
+    ul {
+      @include reset-list();
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        padding: 0 0.5em;
+      }
+
+      a {
+        display: inline-block;
+        background-color: $c-text;
+        color: white;
+        padding: 0.5em;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+body.white-wine {
+  main .entry-header h1:after,
+  main article.hentry .entry-content h3:after {
+    border-color: #f6de72;
+  }
+
+}
