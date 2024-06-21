@@ -19,7 +19,61 @@
 		</header><!-- .entry-header -->
 
 		<div class="entry-content" itemprop="articleBody">
-			<?php the_content(); ?>
+			<?php if (get_field('wine_content')) { ?>
+				<?php while ( have_rows( 'wine_content' ) ) : the_row(); ?>
+					<div class="wine-info">
+						<?php if (get_sub_field('titre')): ?>
+							<h3><?php the_sub_field( 'titre' ); ?></h3>
+						<?php endif; ?>
+						<?php if (get_sub_field('contenu')): ?>
+							<div class="content"><?php the_sub_field( 'contenu' ); ?></div>
+						<?php endif; ?>
+					</div>
+				<?php endwhile; ?>
+			<?php } else {
+				the_content();
+			} ?>
+
+			<?php if(get_field('millesime') || get_field('cepages') || get_field('alcool')) : ?>
+				<h3>Fiche technique</h3>
+			<?php endif; ?>
+
+			<?php if(get_field('millesime')): ?>
+				<div class="wine-attribute millesime">
+					<figure class="picto">
+						<img src="<?php bloginfo('template_directory'); ?>/img/picto-millesime.png">
+					</figure>
+					<div class="intro">
+						<p><strong>Millésime :</strong></p>
+						<p><?php the_field( 'millesime' ); ?></p>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<?php if(get_field('cepages')): ?>
+				<div class="wine-attribute cepages">
+					<figure class="picto">
+						<img src="<?php bloginfo('template_directory'); ?>/img/picto-cepages.png">
+					</figure>
+					<div class="intro">
+						<p><strong>Cépages :</strong></p>
+						<p><?php the_field( 'cepages' ); ?></p>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<?php if(get_field('alcool')): ?>
+				<div class="wine-attribute alcool">
+					<figure class="picto">
+						<img src="<?php bloginfo('template_directory'); ?>/img/picto-alcool.png">
+					</figure>
+					<div class="intro">
+						<p><strong>Alcool :</strong></p>
+						<p><?php the_field( 'alcool' ); ?></p>
+					</div>
+				</div>
+		<?php endif; ?>
+
 		</div><!-- .entry-content -->
 
 		<?php if ( have_rows( 'galerie' ) ) : ?>
@@ -35,42 +89,6 @@
 					<?php } ?>
 				<?php endwhile; ?>
 			</figure>
-		<?php endif; ?>
-
-		<?php if(get_field('millesime')): ?>
-			<div class="wine-attribute millesime">
-				<figure class="picto">
-					<img src="<?php bloginfo('template_directory'); ?>/img/picto-millesime.png">
-				</figure>
-				<div class="intro">
-					<p><strong>Millésime :</strong></p>
-					<p><?php the_field( 'millesime' ); ?></p>
-				</div>
-			</div>
-		<?php endif; ?>
-
-		<?php if(get_field('cepages')): ?>
-			<div class="wine-attribute cepages">
-				<figure class="picto">
-					<img src="<?php bloginfo('template_directory'); ?>/img/picto-cepages.png">
-				</figure>
-				<div class="intro">
-					<p><strong>Cépages :</strong></p>
-					<p><?php the_field( 'cepages' ); ?></p>
-				</div>
-			</div>
-		<?php endif; ?>
-
-		<?php if(get_field('alcool')): ?>
-			<div class="wine-attribute alcool">
-				<figure class="picto">
-					<img src="<?php bloginfo('template_directory'); ?>/img/picto-alcool.png">
-				</figure>
-				<div class="intro">
-					<p><strong>Alcool :</strong></p>
-					<p><?php the_field( 'alcool' ); ?></p>
-				</div>
-			</div>
 		<?php endif; ?>
 	
 		<?php

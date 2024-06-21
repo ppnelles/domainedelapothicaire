@@ -168,12 +168,13 @@ main {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
-      justify-content: space-between; 
+      justify-content: flex-start; 
     }
 
     li {
       @include mappy-bp(screen-sm) {
         width: 31.3333%; 
+        margin: 0 1%;
       }
     }
 
@@ -425,6 +426,10 @@ main.news {
       }
     }
   }
+}
+
+.page .entry-content .wine-info {
+  margin-bottom: 2em;
 }
 
 body.white-wine {
