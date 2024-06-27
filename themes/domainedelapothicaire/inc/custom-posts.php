@@ -4,6 +4,20 @@ add_action('init', 'create_cp');
 
 function create_cp() {
 
+	register_post_type('popup', array(
+		 'label' => __('Pop up'),
+		 'singular_label' => __('Pop up'),
+		 'public' => true,
+		 'show_ui' => true,
+		 'show_in_menu' => true,
+		 'menu_position' => 22,
+		 'capability_type' => 'post',
+		 'hierarchical' => false,
+		 'has_archive' => false,
+		 'supports' => array('title', 'revisions'),
+		 //'menu_icon' => 'dashicons-groups'
+	));
+
 	// register_post_type('popup', array(
 	// 	 'label' => __('Pop up'),
 	// 	 'singular_label' => __('Pop up'),

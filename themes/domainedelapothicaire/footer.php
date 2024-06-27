@@ -34,7 +34,7 @@
 </div><!-- #page -->
 
 
-<?php //get_template_part('template-parts/content','popup'); ?>
+<?php get_template_part('template-parts/content','popup'); ?>
 
 <?php get_template_part('template-parts/content','cookie'); ?>
 

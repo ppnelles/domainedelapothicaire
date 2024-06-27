@@ -40,7 +40,6 @@ if($showPopup == true) :
 
 
 				<div class="popup-content">
-					<button class="popup-close"><span>X</span></button>
 					
 					<?php if(get_field('pop_title')): ?>
 						<h2 class="pop-title"><?php the_field( 'pop_title'); ?></h2>
@@ -48,40 +47,32 @@ if($showPopup == true) :
 
 					<?php if($popFormat == 'fullscreen' && get_field('pop_content_fullscreen')): ?>
 						<div class="pop-inner">
-							<?php the_field( 'pop_content_fullscreen'); ?>
+							<div class="pop-content">
+								<?php the_field( 'pop_content_fullscreen'); ?>
+							</div>
+							<?php if ( have_rows( 'pop_buttons' ) ) : ?>
+								<ul class='pop-buttons'>
+									<?php while ( have_rows( 'pop_buttons' ) ) : the_row(); ?>
+										<li>
+											<a href="<?php the_sub_field( 'link' ); ?>" class="btn <?php the_sub_field( 'class_html' ); ?>"><?php the_sub_field( 'title' ); ?></a>
+										</li>
+									<?php endwhile; ?>
+								</ul>
+							<?php endif; ?>
+							<?php if(get_field('pop_footer')): ?>
+								<div class="pop-footer">
+									<?php the_field( 'pop_footer' ); ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					<?php elseif($popFormat == 'bubble' && get_field('pop_content_bubble')): ?>
 						<div class="pop-inner">
 							<?php the_field( 'pop_content_bubble'); ?>
+							<button class="popup-close"><span>X</span></button>
 						</div>
 					<?php endif; ?>
 
-					<?php 
-						$dataLayer='';
-						$classes='';
-						$htmlId='';
 
-						if(get_field( 'pop__gtm_event' )):
-							$dataLayer='onclick="dataLayer.push({\'event\': \''.get_field( 'pop__gtm_event' ).'\',\'eventCategory\': \''.get_field( 'pop_gtm__event_category' ).'\',\'eventAction\': \''.get_field( 'pop__gtm_event_action' ).'\',\'eventLabel\': \''.get_field( 'pop__gtm_event_label' ).'\'})"';
-						endif; 
-
-						if(get_field( 'pop__html_classes' )):
-							$classes = get_field( 'pop__html_classes' );
-						endif;
-
-						if(get_field( 'pop__html_id' )):
-							$htmlId = 'id="'.get_field( 'pop__html_id' ).'"';
-						endif;
-
-					?>
-
-					<?php if(get_field('pop__btn_link') && get_field('pop__btn_title') ): ?>
-						<div class="cta">
-							<a href="<?php the_field( 'pop__btn_link' ); ?>" class="btn <?php echo $classes ?>" <?php echo $htmlId; echo $dataLayer; ?>>
-								<?php the_field( 'pop__btn_title' ); ?>
-							</a>
-						</div>
-					<?php endif; ?>
 
 				</div>
 			</div>

@@ -23,13 +23,19 @@ jQuery(document).ready(function ($) {
       $('#cookiebanner').addClass('hidden');
 	});
 	
-	jQuery(".popup-close, .popup-bg").click(function(event) {
+	jQuery(".pop_majeur").click(function(event) {
+			event.preventDefault();
       var date = new Date();
       date.setTime(date.getTime()+(60*60*1000));
       document.cookie = "hidepopup" + "=" + "hidden" + "; expires=" + date.toGMTString();
 	  
 	  jQuery('#popup').addClass('hidden');
+	  jQuery('body').removeClass('popup-open');
 	});
+
+	if(jQuery('#popup').hasClass('fullscreen') && !jQuery('#popup').hasClass('hidden')) {
+		jQuery('body').addClass('popup-open');
+	}
 
 })
 
